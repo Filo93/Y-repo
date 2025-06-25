@@ -89,7 +89,7 @@ if file:
     for model, preds in results.items():
         if len(preds) == len(y_true):
             mae = mean_absolute_error(y_true, preds)
-            rmse = mean_squared_error(y_true, preds, squared=False)
+            rmse = mean_squared_error(y_true, preds) ** 0.5
             mape = np.mean(np.abs((y_true - preds) / y_true)) * 100
             error_table.append({"Modello": model, "MAE": mae, "RMSE": rmse, "MAPE": mape})
 
