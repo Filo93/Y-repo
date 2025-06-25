@@ -34,7 +34,7 @@ if file:
     date_col = st.selectbox("Seleziona la colonna temporale", all_cols)
     value_col = st.selectbox("Seleziona la colonna di volume (target)", all_cols)
 
-    df[date_col] = pd.to_datetime(df[date_col])
+    df[date_col] = pd.to_datetime(df[date_col], dayfirst=True)
     df = df[[date_col, value_col]].dropna()
     df = df.sort_values(by=date_col)
     df = df.rename(columns={date_col: "ds", value_col: "y"})
